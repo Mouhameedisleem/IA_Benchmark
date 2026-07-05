@@ -1,0 +1,54 @@
+.card { border-radius: 16px !important; overflow: hidden; }
+
+.card-header {
+  background: #fff !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  padding: 18px 24px !important;
+}
+
+.card-footer {
+  background: #fff !important;
+  border-top: 1px solid #f1f5f9 !important;
+  border-radius: 0 0 16px 16px !important;
+  padding: 16px 24px !important;
+}
+
+/* Info section titles */
+h6.text-primary {
+  font-size: 11px !important;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 14px !important;
+}
+
+/* Field labels */
+label.text-muted {
+  font-size: 11px !important;
+  font-weight: 600;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  color: #94a3b8 !important;
+  margin-bottom: 3px;
+  display: block;
+}
+
+/* Separator */
+hr { border-color: #f1f5f9; opacity: 1; }
+
+/* Badge size */
+.badge { font-size: 11px; padding: 4px 12px; border-radius: 20px; }
+
+/* Back button */
+.btn-link.text-muted {
+  color: #94a3b8 !important;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.btn-link.text-muted:hover {
+  background: #f1f5f9;
+  color: #0f172a !important;
+}

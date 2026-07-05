@@ -1,0 +1,29 @@
+/* Section title inside form */
+h5.text-primary {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 16px !important;
+}
+
+/* Card footer */
+.card-footer {
+  background: #fff !important;
+  border-top: 1px solid #f1f5f9 !important;
+  border-radius: 0 0 16px 16px !important;
+  padding: 16px 24px !important;
+}
+
+/* Back button style */
+.btn-link.text-muted {
+  color: #94a3b8 !important;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-link.text-muted:hover {
+  background: #f1f5f9;
+  color: #0f172a !important;
+}

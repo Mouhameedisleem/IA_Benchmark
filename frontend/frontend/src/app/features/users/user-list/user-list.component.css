@@ -1,0 +1,37 @@
+/* KPI stat cards */
+.kpi-stat-card { background: #fff; }
+.kpi-icon-wrap {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  font-size: 18px;
+}
+.kpi-tag {
+  font-size: 11px; font-weight: 600;
+  padding: 3px 10px; border-radius: 20px;
+}
+.kpi-num {
+  font-size: 2rem; font-weight: 900;
+  color: #0f172a; line-height: 1;
+}
+.kpi-label { color: #64748b; font-size: 13px; margin-top: 5px; }
+
+/* Table rows */
+.table td { vertical-align: middle; }
+.table-hover tbody tr:hover { cursor: default; }
+
+/* User avatar circle */
+.rounded-circle {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  background: #f1f5f9 !important;
+}
+.rounded-circle i { color: #6366f1 !important; }
+
+/* Page link cursor */
+.page-link { cursor: pointer; }
+
+/* Badge font */
+.badge { font-weight: 600; }

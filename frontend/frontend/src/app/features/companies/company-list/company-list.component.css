@@ -1,0 +1,19 @@
+/* Clickable table rows */
+.cursor-pointer {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cursor-pointer:hover { background: #fafbff !important; }
+
+/* Table */
+.table td { vertical-align: middle; }
+.page-link { cursor: pointer; }
+
+/* Badge */
+.badge { font-weight: 600; }
+
+/* Size badges — override ngClass outputs */
+:host ::ng-deep .badge-tpe   { background: #eff0fe; color: #4338ca; }
+:host ::ng-deep .badge-pme   { background: #dcfce7; color: #15803d; }
+:host ::ng-deep .badge-eti   { background: #fefce8; color: #a16207; }
+:host ::ng-deep .badge-ge    { background: #fef2f2; color: #b91c1c; }

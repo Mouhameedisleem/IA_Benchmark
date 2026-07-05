@@ -1,0 +1,224 @@
+<!-- ════════════════════ SIDEBAR ════════════════════ -->
+<aside class="sidebar" [class.sidebar-open]="isSidebarOpen">
+
+  <!-- Logo -->
+  <div class="sidebar-logo">
+    <a [routerLink]="getHomeRoute()" (click)="closeSidebar()">
+      <img src="assets/logo.png" alt="Hsys Solutions" class="logo-img"/>
+    </a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sidebar-nav" *ngIf="isAuthenticated()">
+
+    <!-- ══ ADMIN ══ -->
+    <ng-container *ngIf="hasRole('ADMIN')">
+      <div class="nav-section-label">Principal</div>
+
+      <a class="nav-item" routerLink="/admin/dashboard" routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact:true}" (click)="closeSidebar()">
+        <i class="fas fa-gauge-high"></i><span>Dashboard</span>
+      </a>
+
+      <div class="nav-section-label" style="margin-top:20px;">Gestion</div>
+
+      <!-- Entreprises -->
+      <div class="nav-item-group">
+        <button class="nav-item nav-group-trigger"
+                (click)="toggleSection('enterprises')"
+                [class.active]="isLinkActive('/companies')">
+          <i class="fas fa-building"></i>
+          <span>Entreprises</span>
+          <i class="fas fa-chevron-right nav-chevron"
+             [class.rotated]="openSections['enterprises']"></i>
+        </button>
+        <div class="nav-submenu" [class.open]="openSections['enterprises']">
+          <a class="nav-subitem" routerLink="/companies"
+             routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+             (click)="closeSidebar()">
+            <i class="fas fa-list"></i>Liste
+          </a>
+          <a class="nav-subitem" routerLink="/companies/new"
+             routerLinkActive="active" (click)="closeSidebar()">
+            <i class="fas fa-plus"></i>Nouvelle
+          </a>
+        </div>
+      </div>
+
+      <!-- Utilisateurs -->
+      <div class="nav-item-group">
+        <button class="nav-item nav-group-trigger"
+                (click)="toggleSection('users')"
+                [class.active]="isLinkActive('/users')">
+          <i class="fas fa-users"></i>
+          <span>Utilisateurs</span>
+          <i class="fas fa-chevron-right nav-chevron"
+             [class.rotated]="openSections['users']"></i>
+        </button>
+        <div class="nav-submenu" [class.open]="openSections['users']">
+          <a class="nav-subitem" routerLink="/users"
+             routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+             (click)="closeSidebar()">
+            <i class="fas fa-list"></i>Liste
+          </a>
+          <a class="nav-subitem" routerLink="/users/new"
+             routerLinkActive="active" (click)="closeSidebar()">
+            <i class="fas fa-user-plus"></i>Nouveau
+          </a>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- ══ CONSULTANT ══ -->
+    <ng-container *ngIf="hasRole('CONSULTANT')">
+      <div class="nav-section-label">Principal</div>
+
+      <a class="nav-item" routerLink="/consultant/dashboard" routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact:true}" (click)="closeSidebar()">
+        <i class="fas fa-gauge-high"></i><span>Dashboard</span>
+      </a>
+
+      <div class="nav-section-label" style="margin-top:20px;">Analyse</div>
+
+      <!-- Entreprises -->
+      <div class="nav-item-group">
+        <button class="nav-item nav-group-trigger"
+                (click)="toggleSection('enterprises')"
+                [class.active]="isLinkActive('/companies')">
+          <i class="fas fa-building"></i>
+          <span>Entreprises</span>
+          <i class="fas fa-chevron-right nav-chevron"
+             [class.rotated]="openSections['enterprises']"></i>
+        </button>
+        <div class="nav-submenu" [class.open]="openSections['enterprises']">
+          <a class="nav-subitem" routerLink="/companies"
+             routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+             (click)="closeSidebar()">
+            <i class="fas fa-list"></i>Liste
+          </a>
+          <a class="nav-subitem" routerLink="/companies/new"
+             routerLinkActive="active" (click)="closeSidebar()">
+            <i class="fas fa-plus"></i>Nouvelle
+          </a>
+        </div>
+      </div>
+
+      <a class="nav-item" routerLink="/consultant/analysis"
+         routerLinkActive="active" (click)="closeSidebar()">
+        <i class="fas fa-chart-line"></i><span>Résultats & Analyses</span>
+      </a>
+      <a class="nav-item" routerLink="/consultant/frameworks"
+         routerLinkActive="active" (click)="closeSidebar()">
+        <i class="fas fa-brain"></i><span>Référentiels IA</span>
+      </a>
+      <a class="nav-item" routerLink="/consultant/rapport"
+         routerLinkActive="active" (click)="closeSidebar()">
+        <i class="fas fa-file-alt"></i><span>Rapport</span>
+      </a>
+    </ng-container>
+
+    <!-- ══ CLIENT ══ -->
+    <ng-container *ngIf="hasRole('CLIENT')">
+      <div class="nav-section-label">Principal</div>
+
+      <a class="nav-item" routerLink="/client/dashboard" routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact:true}" (click)="closeSidebar()">
+        <i class="fas fa-gauge-high"></i><span>Dashboard</span>
+      </a>
+      <a class="nav-item" routerLink="/client/questionnaire" routerLinkActive="active"
+         [class.nav-item-disabled]="questionnaireCompleted" (click)="closeSidebar()">
+        <i class="fas fa-edit"></i>
+        <span>Questionnaire</span>
+        <span *ngIf="questionnaireCompleted"
+              class="nav-badge-done">Fait</span>
+      </a>
+      <a class="nav-item" *ngIf="hasCompany()"
+         [routerLink]="['/companies', getCompanyId()]"
+         routerLinkActive="active" (click)="closeSidebar()">
+        <i class="fas fa-info-circle"></i><span>Mon Entreprise</span>
+      </a>
+    </ng-container>
+
+  </nav>
+
+  <!-- Sidebar footer -->
+  <div class="sidebar-footer" *ngIf="isAuthenticated()">
+    <div class="sidebar-user-info">
+      <div class="sidebar-avatar">{{ getUserInitials() }}</div>
+      <div class="sidebar-user-text">
+        <div class="sidebar-user-name">{{ getFullName() }}</div>
+        <div class="sidebar-user-role">{{ getRoleLabel() }}</div>
+      </div>
+    </div>
+    <button class="sidebar-logout" (click)="logout($event)" title="Déconnexion">
+      <i class="fas fa-sign-out-alt"></i>
+    </button>
+  </div>
+
+</aside>
+
+<!-- ════════════════════ TOPBAR ════════════════════ -->
+<header class="topbar" *ngIf="isAuthenticated()">
+
+  <!-- Left -->
+  <div class="topbar-left">
+    <button class="topbar-hamburger" (click)="toggleSidebar()">
+      <i class="fas" [class.fa-bars]="!isSidebarOpen" [class.fa-times]="isSidebarOpen"></i>
+    </button>
+    <nav class="topbar-breadcrumb" aria-label="breadcrumb">
+      <ng-container *ngFor="let crumb of breadcrumbs; let last = last; let i = index">
+        <span *ngIf="i > 0" class="bc-sep">›</span>
+        <a *ngIf="!last" [routerLink]="crumb.url" class="bc-link">{{ crumb.label }}</a>
+        <span *ngIf="last" class="bc-current">{{ crumb.label }}</span>
+      </ng-container>
+    </nav>
+  </div>
+
+  <!-- Right -->
+  <div class="topbar-right">
+
+    <span class="topbar-date">
+      <i class="far fa-calendar-alt"></i>{{ currentDate | date:'EEE d MMM yyyy' }}
+    </span>
+
+    <!-- User -->
+    <div class="tb-dropdown">
+      <button class="tb-user-btn" (click)="toggleUserPanel($event)">
+        <div class="tb-avatar">{{ getUserInitials() }}</div>
+        <span class="tb-username">{{ getFullName() }}</span>
+        <i class="fas fa-chevron-down tb-caret"></i>
+      </button>
+      <div class="tb-panel user-panel" *ngIf="isUserOpen" (click)="$event.stopPropagation()">
+        <div class="user-panel-head">
+          <div class="user-panel-avatar">{{ getUserInitials() }}</div>
+          <div>
+            <div class="user-panel-name">{{ currentUser?.firstName }} {{ currentUser?.lastName }}</div>
+            <div class="user-panel-email">{{ currentUser?.email }}</div>
+            <span class="user-role-badge" [ngClass]="getRoleBadgeClass()">{{ getRoleLabel() }}</span>
+          </div>
+        </div>
+        <div class="panel-divider"></div>
+        <a class="panel-item" routerLink="/profile"
+           (click)="closeUserPanel()">
+          <i class="fas fa-user"></i>Mon Profil
+        </a>
+        <a class="panel-item" routerLink="/settings"
+           (click)="closeUserPanel()">
+          <i class="fas fa-cog"></i>Paramètres
+        </a>
+        <a class="panel-item" routerLink="/help"
+           (click)="closeUserPanel()">
+          <i class="fas fa-question-circle"></i>Aide
+        </a>
+        <div class="panel-divider"></div>
+        <a class="panel-item panel-item-danger" href="#" (click)="logout($event)">
+          <i class="fas fa-sign-out-alt"></i>Déconnexion
+        </a>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile overlay -->
+<div class="sidebar-overlay" *ngIf="isSidebarOpen" (click)="closeSidebar()"></div>

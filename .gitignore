@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.env
+*.env.local
+
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.log
+
+# Spring logs
+spring-*.log
+*.err.log
+*.out.log
+
+# Node / Angular
+node_modules/
+dist/
+.angular/
+*.js.map
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.suo
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sensitive config — never commit real credentials
+backend3/src/main/resources/application.properties
+
+# Duplicate/backup folders, not needed in repo
+frontend.rar
+frontend-backup/
