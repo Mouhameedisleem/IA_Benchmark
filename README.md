@@ -1,6 +1,5 @@
 <div align="center">
 
-<img src="frontend/frontend/src/assets/logo.png" alt="IA Benchmark" width="520"/>
 
 # IA Benchmark
 
